@@ -21,21 +21,7 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-  {
-    "rmagatti/auto-session",
-    lazy = false,
-    ---enables autocomplete for opts
-    ---@module "auto-session"
-    ---@type AutoSession.Config
-    opts = {
-      suppressed_dirs = { "~/Projects", "~/Downloads" },
-      -- log_level = 'debug',
-      auto_restore_last_session = vim.loop.cwd() == vim.loop.os_homedir(),
-    },
-    config = function(_, opts)
-      require("auto-session").setup(opts)
-    end,
-  },
+  require "plugins.auto-session",
   require "plugins.supermaven",
   {
     "nvim-treesitter/nvim-treesitter-context",
