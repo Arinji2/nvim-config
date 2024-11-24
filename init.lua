@@ -21,6 +21,7 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
+  require "plugins.toggle-term",
   require "plugins.auto-session",
   require "plugins.supermaven",
   {
@@ -28,9 +29,6 @@ require("lazy").setup({
     lazy = false,
   },
   require "plugins.trouble",
-  {
-    "akinsho/toggleterm.nvim",
-  },
   { import = "plugins" },
 }, lazy_config)
 
