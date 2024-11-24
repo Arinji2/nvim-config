@@ -10,8 +10,8 @@ M.base46 = {
 M.ui = {
   lsp_semantic_tokens = true,
   statusline = {
-    theme = "minimal",
-    separator_style = "round",
+    theme = "default",
+    separator_style = "arrow",
     modules = {
       file = function()
         -- relative file path rather than just file name
