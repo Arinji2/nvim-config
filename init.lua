@@ -21,6 +21,7 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
+  require "plugins.git-signs",
   require "plugins.conform",
   require "plugins.toggle-term",
   require "plugins.auto-session",
@@ -51,16 +52,6 @@ require("nvim-tree").setup {
   },
 }
 
-require("gitsigns").setup {
-  signs = {
-    add = { text = "+" },
-    change = { text = "~" },
-    delete = { text = "-" },
-    topdelete = { text = "‾" },
-    changedelete = { text = "~" },
-  },
-  linehl = false, -- Optionally highlight the entire line where changes are made
-}
 vim.opt.virtualedit = "onemore"
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.foldmethod = "expr"
