@@ -53,6 +53,9 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter-context",
     lazy = false,
   },
+  {
+    "akinsho/toggleterm.nvim",
+  },
   { import = "plugins" },
 }, lazy_config)
 
@@ -74,6 +77,16 @@ require("nvim-tree").setup {
   },
 }
 
+require("gitsigns").setup {
+  signs = {
+    add = { text = "+" },
+    change = { text = "~" },
+    delete = { text = "-" },
+    topdelete = { text = "‾" },
+    changedelete = { text = "~" },
+  },
+  linehl = false, -- Optionally highlight the entire line where changes are made
+}
 vim.opt.virtualedit = "onemore"
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.foldmethod = "expr"
