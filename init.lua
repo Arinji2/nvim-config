@@ -21,6 +21,7 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
+  require "plugins.conform",
   require "plugins.toggle-term",
   require "plugins.auto-session",
   require "plugins.supermaven",
