@@ -27,6 +27,7 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter-context",
     lazy = false,
   },
+  require "plugins.trouble",
   {
     "akinsho/toggleterm.nvim",
   },
