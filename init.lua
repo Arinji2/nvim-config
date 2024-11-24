@@ -36,19 +36,7 @@ require("lazy").setup({
       require("auto-session").setup(opts)
     end,
   },
-  {
-    "supermaven-inc/supermaven-nvim",
-    lazy = false,
-    config = function()
-      require("supermaven-nvim").setup {
-        keymaps = {
-          accept_suggestion = "<C-q>",
-          clear_suggestion = "<C-]>",
-          accept_word = "<C-j>",
-        },
-      }
-    end,
-  },
+  require "plugins.supermaven",
   {
     "nvim-treesitter/nvim-treesitter-context",
     lazy = false,
