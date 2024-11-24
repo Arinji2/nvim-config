@@ -1,11 +1,12 @@
 return {
   "akinsho/toggleterm.nvim",
-  lazy = false, -- Load immediately
+  lazy = false,
   config = function()
     local Terminal = require("toggleterm.terminal").Terminal
     local lazygit = nil
 
     local colors = dofile(vim.g.base46_cache .. "colors")
+
     -- Lazygit terminal toggle function
     function _G.toggle_lazygit()
       if not lazygit then
@@ -42,7 +43,7 @@ return {
       shade_terminals = false,
       highlights = {
         NormalFloat = {
-          guibg = colors.black, -- Use a default background color; customize if needed
+          guibg = colors.black,
         },
       },
     }
