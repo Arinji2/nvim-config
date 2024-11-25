@@ -1,5 +1,9 @@
 return {
   {
+    "charlespascoe/vim-go-syntax",
+    ft = "go",
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
