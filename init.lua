@@ -8,7 +8,6 @@ if not vim.uv.fs_stat(lazypath) then
   local repo = "https://github.com/folke/lazy.nvim.git"
   vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
 end
-
 vim.opt.rtp:prepend(lazypath)
 
 local lazy_config = require "configs.lazy"
@@ -27,11 +26,8 @@ require("lazy").setup({
   require "plugins.toggle-term",
   require "plugins.auto-session",
   require "plugins.supermaven",
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    lazy = false,
-  },
   require "plugins.trouble",
+
   { import = "plugins" },
 }, lazy_config)
 
@@ -41,7 +37,6 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 require "nvchad.autocmds"
-
 
 vim.opt.virtualedit = "onemore"
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
