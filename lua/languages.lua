@@ -6,6 +6,8 @@ local languages = {
     "html",
     "css",
     "go",
+    "yaml",
+    "dockerfile",
   },
   lsp_servers = {
     "html",
