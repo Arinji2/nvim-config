@@ -20,6 +20,7 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
+  require "plugins.inline-diagnostics",
   require "plugins.nvim-treesitter",
   require "plugins.git-signs",
   require "plugins.conform",
