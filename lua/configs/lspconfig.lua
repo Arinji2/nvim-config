@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- List of LSP servers with default configurations
-local servers = { "html", "cssls", "gopls" } -- Add "gopls" here
+local servers = require("languages").lsp_servers
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- Setup LSP servers with default configs
@@ -16,7 +16,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- Configuring a single server with additional settings, example: gopls
+-- GO language server
 lspconfig.gopls.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
