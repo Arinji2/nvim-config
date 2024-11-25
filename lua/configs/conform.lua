@@ -4,6 +4,12 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     go = { "gofumpt", "goimports" },
+    json = { "prettierd" },
+    javascript = { "prettierd" },
+    javascriptreact = { "prettierd" },
+    typescript = { "prettierd" },
+    typescriptreact = { "prettierd" },
+    markdown = { "prettierd" },
   },
 
   format_on_save = {
