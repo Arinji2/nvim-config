@@ -21,6 +21,7 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
+  require "plugins.nvim-treesitter",
   require "plugins.git-signs",
   require "plugins.conform",
   require "plugins.toggle-term",
@@ -41,16 +42,6 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "nvchad.autocmds"
 
-require("nvim-tree").setup {
-  update_cwd = true,
-  git = {
-    enable = true,
-    ignore = false,
-  },
-  filters = {
-    dotfiles = false,
-  },
-}
 
 vim.opt.virtualedit = "onemore"
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
