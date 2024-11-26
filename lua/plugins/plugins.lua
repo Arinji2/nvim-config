@@ -1,5 +1,8 @@
 return {
   {
+    "rest-nvim/rest.nvim",
+  },
+  {
     "charlespascoe/vim-go-syntax",
     ft = "go",
   },
