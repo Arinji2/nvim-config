@@ -33,3 +33,46 @@ lspconfig.gopls.setup {
     },
   },
 }
+
+-- Extend vtsls configuration with eslint auto-fix on save
+lspconfig.vtsls.setup {
+  on_attach = function(client, bufnr)
+    -- Extend the default NvChad on_attach
+    require("nvchad.configs.lspconfig").on_attach(client, bufnr)
+
+    -- Add auto-fix on save
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        -- First, run eslint --fix
+        vim.cmd "silent! !eslint --fix %"
+
+        -- Then, use LSP to organize imports
+        vim.lsp.buf.code_action {
+          context = {
+            diagnostics = vim.lsp.diagnostic.get_line_diagnostics(),
+            only = {
+              "source.organizeImports",
+            },
+          },
+          apply = true,
+        }
+      end,
+      group = vim.api.nvim_create_augroup("VTslsAutoFix", { clear = true }),
+    })
+  end,
+  on_init = require("nvchad.configs.lspconfig").on_init,
+  capabilities = require("nvchad.configs.lspconfig").capabilities,
+  settings = {
+    typescript = {
+      preferences = {
+        importModuleSpecifier = "non-relative",
+      },
+    },
+    javascript = {
+      preferences = {
+        importModuleSpecifier = "non-relative",
+      },
+    },
+  },
+}
