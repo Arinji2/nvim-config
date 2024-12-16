@@ -41,7 +41,7 @@ require "nvchad.autocmds"
 
 vim.opt.virtualedit = "onemore"
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-vim.opt.foldmethod = "expr"
+vim.opt.foldmethod = "syntax"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 
