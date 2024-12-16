@@ -28,7 +28,8 @@ require("lazy").setup({
   require "plugins.auto-session",
   require "plugins.supermaven",
   require "plugins.trouble",
-  require "plugins.lazygit", { import = "plugins" },
+  require "plugins.lazygit",
+  { import = "plugins" },
 }, lazy_config)
 
 -- load theme
