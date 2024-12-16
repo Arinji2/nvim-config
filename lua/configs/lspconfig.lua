@@ -40,25 +40,32 @@ lspconfig.vtsls.setup {
     -- Extend the default NvChad on_attach
     require("nvchad.configs.lspconfig").on_attach(client, bufnr)
 
-    -- Add auto-fix on save
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
       callback = function()
-        -- First, run eslint --fix
-        vim.cmd "silent! !eslint --fix %"
+        -- Get current diagnostics
+        local diagnostics = vim.diagnostic.get(bufnr)
 
-        -- Then, use LSP to organize imports
-        vim.lsp.buf.code_action {
-          context = {
-            diagnostics = vim.lsp.diagnostic.get_line_diagnostics(),
-            only = {
-              "source.organizeImports",
+        -- Check if there are any diagnostics
+        print(#diagnostics)
+        if #diagnostics > 0 then
+          -- Run eslint --fix only if there are issues
+          vim.cmd "silent! !eslint --fix %"
+
+          -- Organize imports only if there are diagnostics
+          vim.lsp.buf.code_action {
+            context = {
+              diagnostics = vim.lsp.diagnostic.get_line_diagnostics(),
+              only = {
+                "source.organizeImports",
+              },
             },
-          },
-          apply = true,
-        }
+            apply = true,
+          }
+        end
       end,
       group = vim.api.nvim_create_augroup("VTslsAutoFix", { clear = true }),
+      desc = "Auto-fix VTSLS issues on save only if diagnostics exist",
     })
   end,
   on_init = require("nvchad.configs.lspconfig").on_init,
