@@ -10,6 +10,7 @@ local options = {
     typescript = { "prettierd" },
     typescriptreact = { "prettierd" },
     markdown = { "prettierd" },
+    sql = { "sqlfmt" },
   },
 
   format_on_save = {

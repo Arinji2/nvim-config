@@ -10,12 +10,14 @@ local languages = {
     "dockerfile",
     "typescript",
     "javascript",
+    "sql",
   },
   lsp_servers = {
     "html",
     "cssls",
     "gopls",
     "vtsls",
+    "sqlls",
   },
 }
 

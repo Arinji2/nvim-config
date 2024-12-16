@@ -16,6 +16,15 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.sqlls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  cmd = { "sql-language-server", "up", "--method", "stdio" },
+  filetypes = { "sql" },
+  root_dir = lspconfig.util.root_pattern ".",
+}
+
 -- GO language server
 lspconfig.gopls.setup {
   on_attach = nvlsp.on_attach,
