@@ -29,6 +29,7 @@ require("lazy").setup({
   require "plugins.supermaven",
   require "plugins.trouble",
   require "plugins.lazygit",
+  require "plugins.rename",
   { import = "plugins" },
 }, lazy_config)
 

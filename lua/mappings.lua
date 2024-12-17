@@ -45,3 +45,13 @@ end
 
 -- Keymaps for toggling and creating terminals
 map({ "n", "t" }, "<C-\\>", toggle_current_terminal, { desc = "Toggle the current terminal" })
+
+vim.keymap.set("n", "<leader>rn", function()
+  require "inc_rename"
+  return ":IncRename "
+end, { desc = "Rename the word under cursor", expr = true })
+
+vim.keymap.set("n", "<leader>rN", function()
+  require "inc_rename"
+  return ":IncRename " .. vim.fn.expand "<cword>"
+end, { desc = "Rename the word under cursor (Fills Word)", expr = true })
