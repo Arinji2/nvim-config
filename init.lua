@@ -30,6 +30,7 @@ require("lazy").setup({
   require "plugins.trouble",
   require "plugins.lazygit",
   require "plugins.rename",
+  require "plugins.hardtime",
   { import = "plugins" },
 }, lazy_config)
 
