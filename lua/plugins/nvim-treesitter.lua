@@ -3,8 +3,13 @@ return {
   opts = {
     ensure_installed = require("languages").treesitter,
   },
-  highlight = {
-    enable = true,
+  dependencies = {
+    {
+      "windwp/nvim-ts-autotag",
+      config = function()
+        require("nvim-ts-autotag").setup()
+      end,
+    },
   },
   config = function()
     require("nvim-tree").setup {

@@ -9,6 +9,12 @@ M.base46 = {
 
 M.ui = {
   lsp_semantic_tokens = true,
+  cmp = {
+    icons_left = true,
+    format_colors = {
+      tailwind = true,
+    },
+  },
   statusline = {
     theme = "default",
     separator_style = "arrow",

@@ -10,6 +10,7 @@ local languages = {
     "dockerfile",
     "typescript",
     "javascript",
+    "tsx",
     "sql",
   },
   lsp_servers = {
@@ -18,6 +19,7 @@ local languages = {
     "gopls",
     "vtsls",
     "sqlls",
+    "tailwindcss",
   },
 }
 

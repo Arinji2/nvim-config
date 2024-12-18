@@ -20,6 +20,7 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
+
   require "plugins.inline-diagnostics",
   require "plugins.nvim-treesitter",
   require "plugins.git-signs",
@@ -37,7 +38,11 @@ require("lazy").setup({
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
-
+require("nvim-treesitter.configs").setup {
+  highlight = {
+    enable = true,
+  },
+}
 require "options"
 require "nvchad.autocmds"
 
@@ -46,7 +51,7 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.opt.foldmethod = "syntax"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
-
+vim.opt.relativenumber = true
 vim.schedule(function()
   require "mappings"
 end)
