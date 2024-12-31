@@ -1,10 +1,22 @@
 require "nvchad.mappings"
 -- add yours here
+--
 local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("i", "<C-s>", "<Esc>:w<CR>i", { noremap = true, silent = true })
+local nvimTreeAPI = require "nvim-tree.api"
+map("n", "<leader>r", function()
+  nvimTreeAPI.tree.change_root_to_node()
+end, { desc = "Set selected folder as root" })
 
+map("n", "<leader>fp", function()
+  require("scripts.prettier").format_with_tailwind()
+end, { desc = "Format with tailwind" })
+
+map("n", "<leader>p", function()
+  nvimTreeAPI.tree.change_root_to_parent()
+end, { desc = "Revert to parent directory as root" })
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = nil
 

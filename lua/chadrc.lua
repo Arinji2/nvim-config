@@ -3,11 +3,12 @@ local M = {}
 
 M.base46 = {
   theme = "catppuccin",
-  transparency = true,
-  hl_override = { IblChar = { fg = "#565b5d" }, IblScopeChar = { fg = "#7a8285" } },
 }
 
 M.ui = {
+  tabufline = {
+    order = { "treeOffset", "buffers" },
+  },
   lsp_semantic_tokens = true,
   cmp = {
     icons_left = true,

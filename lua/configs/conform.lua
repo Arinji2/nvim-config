@@ -4,18 +4,18 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     go = { "gofumpt", "goimports" },
-    json = { "prettierd" },
-    javascript = { "prettierd" },
-    javascriptreact = { "prettierd" },
-    typescript = { "prettierd" },
-    typescriptreact = { "prettierd" },
-    markdown = { "prettierd" },
+    json = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
+    markdown = { "prettier" },
     sql = { "sqlfmt" },
   },
 
   format_on_save = {
     -- These options will be passed to conform.format()
-    timeout_ms = 500,
+    timeout_ms = 2500,
     lsp_fallback = true,
   },
 }
