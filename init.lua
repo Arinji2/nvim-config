@@ -19,6 +19,9 @@ require("lazy").setup({
     lazy = false,
     branch = "v2.5",
     import = "nvchad.plugins",
+    config = function()
+      require "options"
+    end,
   },
 
   require "plugins.inline-diagnostics",
@@ -61,12 +64,6 @@ require("treesitter-context").setup {
   max_lines = 1,
   trim_scope = "inner",
 }
-vim.opt.virtualedit = "onemore"
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
-vim.opt.relativenumber = true
 vim.schedule(function()
   require "mappings"
 end)
