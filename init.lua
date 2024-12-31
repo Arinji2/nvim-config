@@ -32,6 +32,7 @@ require("lazy").setup({
   require "plugins.lazygit",
   require "plugins.rename",
   require "plugins.hardtime",
+  require "plugins.multicursors",
   { import = "plugins" },
 }, lazy_config)
 
@@ -42,13 +43,27 @@ require("nvim-treesitter.configs").setup {
   highlight = {
     enable = true,
   },
+  indent = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      node_incremental = "v",
+      node_decremental = "V",
+    },
+  },
 }
 require "options"
 require "nvchad.autocmds"
 
+require("treesitter-context").setup {
+  max_lines = 1,
+  trim_scope = "inner",
+}
 vim.opt.virtualedit = "onemore"
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-vim.opt.foldmethod = "syntax"
+vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 vim.opt.relativenumber = true
