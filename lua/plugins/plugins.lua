@@ -5,7 +5,9 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = "pmizio/typescript-tools.nvim",
     config = function()
+      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
@@ -16,5 +18,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     lazy = false,
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
   },
 }

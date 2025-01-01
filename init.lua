@@ -58,7 +58,7 @@ require("nvim-treesitter.configs").setup {
   },
 }
 require "options"
-require "nvchad.autocmds"
+require "autocmds"
 
 require("treesitter-context").setup {
   max_lines = 1,

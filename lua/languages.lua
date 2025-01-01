@@ -17,7 +17,6 @@ local languages = {
     "html",
     "cssls",
     "gopls",
-    "vtsls",
     "sqlls",
     "tailwindcss",
   },
