@@ -1,15 +1,15 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    css = { "prettier" },
-    html = { "prettier" },
+    css = { "prettierd" },
+    html = { "prettierd" },
     go = { "gofumpt", "goimports" },
-    json = { "prettier" },
-    javascript = { "prettier" },
-    javascriptreact = { "prettier" },
-    typescript = { "prettier" },
-    typescriptreact = { "prettier" },
-    markdown = { "prettier" },
+    json = { "prettierd" },
+    javascript = { "prettierd" },
+    javascriptreact = { "prettierd" },
+    typescript = { "prettierd" },
+    typescriptreact = { "prettierd" },
+    markdown = { "prettierd" },
     sql = { "sqlfmt" },
   },
 
