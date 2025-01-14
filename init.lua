@@ -36,6 +36,7 @@ require("lazy").setup({
   require "plugins.rename",
   require "plugins.hardtime",
   require "plugins.multicursors",
+  require "plugins.ts-ls",
   { import = "plugins" },
 }, lazy_config)
 
