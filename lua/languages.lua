@@ -19,6 +19,7 @@ local languages = {
     "gopls",
     "sqlls",
     "tailwindcss",
+    "eslint",
   },
 }
 
