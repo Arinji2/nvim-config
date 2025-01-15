@@ -43,6 +43,14 @@ lspconfig.gopls.setup {
   },
 }
 
+-- JSON language server
+lspconfig.jsonls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  cmd = { "vscode-json-language-server", "--stdio" },
+  filetypes = { "json" },
+}
 require("typescript-tools").setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,

@@ -20,6 +20,7 @@ local languages = {
     "sqlls",
     "tailwindcss",
     "eslint",
+    "jsonls",
   },
 }
 
