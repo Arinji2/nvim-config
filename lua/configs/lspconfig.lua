@@ -43,11 +43,13 @@ lspconfig.gopls.setup {
   },
 }
 
+local jsonCapabilities = vim.lsp.protocol.make_client_capabilities()
+jsonCapabilities.textDocument.completion.completionItem.snippetSupport = true
 -- JSON language server
 lspconfig.jsonls.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
+  capabilities = jsonCapabilities,
   cmd = { "vscode-json-language-server", "--stdio" },
   filetypes = { "json" },
 }
