@@ -37,12 +37,6 @@ M.ui = {
         end
         return "%#StText# " .. icon .. name
       end,
-      git = function()
-        return ""
-      end,
-      cursor = function()
-        return ""
-      end,
     },
   },
 }
