@@ -34,6 +34,9 @@ vim.keymap.set({ "n", "t" }, "<A-g>", function()
         height = math.floor(vim.o.lines * 1),
         winblend = 3,
       },
+      on_close = function()
+        vim.cmd "set cmdheight=1"
+      end,
     }
   end
 
