@@ -5,7 +5,11 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("i", "<C-s>", "<Esc>:w<CR>i", { noremap = true, silent = true })
+map({ "n", "i" }, "<C-z>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
 local nvimTreeAPI = require "nvim-tree.api"
+map("n", "<leader>fs", "<Cmd> lua require ('telescope.builtin').lsp_document_symbols({ symbols = 'function'})<CR>", {
+  desc = "Find function",
+})
 map("n", "<leader>r", function()
   nvimTreeAPI.tree.change_root_to_node()
 end, { desc = "Set selected folder as root" })
