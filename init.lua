@@ -37,6 +37,7 @@ require("lazy").setup({
   require "plugins.hardtime",
   require "plugins.multicursors",
   require "plugins.ts-ls",
+  require "plugins.discord",
   { import = "plugins" },
 }, lazy_config)
 
