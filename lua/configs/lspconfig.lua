@@ -72,3 +72,11 @@ lspconfig.tailwindcss.setup {
     },
   },
 }
+
+-- C++ language server (Clangd)
+lspconfig.clangd.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  -- You can add extra clangd-specific settings here if needed.
+}

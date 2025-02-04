@@ -11,6 +11,7 @@ local options = {
     typescriptreact = { "prettierd" },
     markdown = { "prettierd" },
     sql = { "sqlfmt" },
+    cpp = { "clang-format" },
   },
 
   format_on_save = {
