@@ -21,10 +21,17 @@ M.ui = {
     separator_style = "arrow",
     modules = {
       file = function()
-        -- relative file path rather than just file name
+        -- relative file path limited to 5 levels
         local icon = "󰈚 "
         local path = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
         local relpath = vim.fn.fnamemodify(path, ":.")
+
+        -- Limit the path depth to 5 levels
+        local parts = vim.split(relpath, "/")
+        if #parts > 4 then
+          relpath = table.concat(vim.list_slice(parts, #parts - 3, #parts), "/")
+        end
+
         local name = (relpath == "" and "Empty ") or relpath
         if name ~= "Empty " then
           local devicons_present, devicons = pcall(require, "nvim-web-devicons")

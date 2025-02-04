@@ -12,6 +12,7 @@ local languages = {
     "javascript",
     "tsx",
     "sql",
+    "c++",
   },
   lsp_servers = {
     "html",
@@ -21,6 +22,7 @@ local languages = {
     "tailwindcss",
     "eslint",
     "jsonls",
+    "clangd",
   },
 }
 

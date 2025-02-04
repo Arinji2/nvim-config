@@ -17,8 +17,8 @@ return {
     autocmd("BufWritePre", {
       pattern = "*.ts,*.tsx,*.jsx,*.js",
       callback = function(args)
-        vim.cmd "TSToolsAddMissingImports sync"
-        vim.cmd "TSToolsOrganizeImports sync"
+        vim.cmd "silent! undojoin | TSToolsAddMissingImports sync"
+        vim.cmd "silent! undojoin | TSToolsOrganizeImports sync"
         require("conform").format { bufnr = args.buf }
       end,
     })
