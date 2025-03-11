@@ -9,14 +9,24 @@ map("n", "<leader>fw", function()
 end, { desc = "telescope live grep (args)" })
 map("i", "<C-s>", "<Esc>:w<CR>i", { noremap = true, silent = true })
 map("x", "<leader>d", "y'>o<Esc>p", { noremap = true, silent = true, desc = "Duplicate selected, below cursor" })
+
 map({ "n", "i" }, "<C-z>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
 map("n", "<leader>fs", "<Cmd> lua require ('telescope.builtin').lsp_document_symbols({ symbols = 'function'})<CR>", {
   desc = "Find function",
 })
 
+vim.keymap.set("n", "<leader>bb", function()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted and not vim.bo[buf].modified then
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end
+  end
+end, { desc = "Close all saved buffers" })
+
 map("n", "<leader>fp", function()
   require("scripts.prettier").format_with_tailwind()
 end, { desc = "Format with tailwind" })
+
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = nil
 
