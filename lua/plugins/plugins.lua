@@ -33,4 +33,14 @@ return {
       telescope.load_extension "live_grep_args"
     end,
   },
+  {
+    "folke/which-key.nvim",
+    lazy = false,
+    keys = { "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+    cmd = "WhichKey",
+    opts = function()
+      dofile(vim.g.base46_cache .. "whichkey")
+      return {}
+    end,
+  },
 }
