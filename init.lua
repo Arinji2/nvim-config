@@ -38,6 +38,8 @@ require("lazy").setup({
   require "plugins.multicursors",
   require "plugins.ts-ls",
   require "plugins.discord",
+  require "plugins.image",
+  require "plugins.markdown",
   { import = "plugins" },
 }, lazy_config)
 
@@ -61,7 +63,6 @@ require("nvim-treesitter.configs").setup {
 }
 require "options"
 require "autocmds"
-
 require("treesitter-context").setup {
   max_lines = 1,
   trim_scope = "inner",
