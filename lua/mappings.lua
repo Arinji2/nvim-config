@@ -4,6 +4,9 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
+map("n", "<leader>fw", function()
+  require("telescope").extensions.live_grep_args.live_grep_args()
+end, { desc = "telescope live grep (args)" })
 map("i", "<C-s>", "<Esc>:w<CR>i", { noremap = true, silent = true })
 map("x", "<leader>d", "y'>o<Esc>p", { noremap = true, silent = true, desc = "Duplicate selected, below cursor" })
 map({ "n", "i" }, "<C-z>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
