@@ -16,7 +16,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-
 -- GO language server
 lspconfig.gopls.setup {
   on_attach = nvlsp.on_attach,
@@ -81,5 +80,4 @@ lspconfig.clangd.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
-  -- You can add extra clangd-specific settings here if needed.
 }
