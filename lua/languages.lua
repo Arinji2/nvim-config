@@ -18,7 +18,6 @@ local languages = {
     "html",
     "cssls",
     "gopls",
-    "sqlls",
     "tailwindcss",
     "eslint",
     "jsonls",
