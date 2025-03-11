@@ -10,20 +10,13 @@ end, { desc = "telescope live grep (args)" })
 map("i", "<C-s>", "<Esc>:w<CR>i", { noremap = true, silent = true })
 map("x", "<leader>d", "y'>o<Esc>p", { noremap = true, silent = true, desc = "Duplicate selected, below cursor" })
 map({ "n", "i" }, "<C-z>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
-local nvimTreeAPI = require "nvim-tree.api"
 map("n", "<leader>fs", "<Cmd> lua require ('telescope.builtin').lsp_document_symbols({ symbols = 'function'})<CR>", {
   desc = "Find function",
 })
-map("n", "<leader>r", function()
-  nvimTreeAPI.tree.change_root_to_node()
-end, { desc = "Set selected folder as root" })
 
 map("n", "<leader>fp", function()
   require("scripts.prettier").format_with_tailwind()
 end, { desc = "Format with tailwind" })
-map("n", "<leader>p", function()
-  nvimTreeAPI.tree.change_root_to_parent()
-end, { desc = "Revert to parent directory as root" })
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = nil
 
