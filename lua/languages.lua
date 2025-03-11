@@ -12,7 +12,6 @@ local languages = {
     "javascript",
     "tsx",
     "sql",
-    "c++",
   },
   lsp_servers = {
     "html",
