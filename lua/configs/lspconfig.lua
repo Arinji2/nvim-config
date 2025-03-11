@@ -61,6 +61,17 @@ lspconfig.tailwindcss.setup {
       emmetCompletions = true,
       hovers = true,
       suggestions = true,
+      -- Enable/disable when using for shadcn variants
+      -- experimental = {
+      --   classRegex = {
+      --     -- Match classes in string literals inside object properties
+      --     [["([^"]*)]],
+      --     -- Match classes in template literals inside object properties
+      --     [[`([^`]*)`]],
+      --     -- Match classes in variant definitions
+      --     [=[['"]([-\w\d]+)['"]\s*:\s*"([^"]*)"]=],
+      --   },
+      -- },
     },
   },
 }
