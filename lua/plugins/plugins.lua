@@ -1,9 +1,5 @@
 return {
   {
-    "charlespascoe/vim-go-syntax",
-    ft = "go",
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = "pmizio/typescript-tools.nvim",
     config = function()

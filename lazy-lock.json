@@ -40,7 +40,6 @@
   "trouble.nvim": { "branch": "main", "commit": "46cf952fc115f4c2b98d4e208ed1e2dce08c9bf6" },
   "typescript-tools.nvim": { "branch": "master", "commit": "35e397ce467bedbbbb5bfcd0aa79727b59a08d4a" },
   "ui": { "branch": "v3.0", "commit": "9a4ecb0bbaecd7208471c678e7dbacdeba517648" },
-  "vim-go-syntax": { "branch": "main", "commit": "4bd077efb24fb728109daa484ba63da2e1f3fc47" },
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },
   "volt": { "branch": "main", "commit": "0cdfa1dfbbfc8fda340054915991fda188db8d8e" },
   "which-key.nvim": { "branch": "main", "commit": "8ab96b38a2530eacba5be717f52e04601eb59326" }
