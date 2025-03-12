@@ -1,4 +1,5 @@
 ---@type ChadrcConfig
+---
 local M = {}
 
 M.base46 = {
@@ -43,6 +44,22 @@ M.ui = {
           name = " " .. name .. " "
         end
         return "%#StText# " .. icon .. name
+      end,
+      lsp = function()
+        if rawget(vim, "lsp") then
+          local clients = vim.lsp.get_clients()
+          -- prioritize typescript-tools if available
+          table.sort(clients, function(a, b)
+            return a.name == "typescript-tools" and b.name ~= "typescript-tools"
+          end)
+
+          for _, client in ipairs(clients) do
+            if client.attached_buffers[vim.api.nvim_get_current_buf()] then
+              return (vim.o.columns > 100 and "%#St_Lsp# LSP -> " .. client.name .. " ") or "%#St_Lsp# LSP "
+            end
+          end
+        end
+        return ""
       end,
     },
   },
