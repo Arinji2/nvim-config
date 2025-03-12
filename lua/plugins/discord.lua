@@ -1,6 +1,6 @@
 return {
   "andweeb/presence.nvim",
-  lazy = false,
+  cmd = { "PresenceStart", "PresenceStop", "PresenceReload" },
   config = function()
     require("presence"):setup {}
   end,
