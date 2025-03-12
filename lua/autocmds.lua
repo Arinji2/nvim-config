@@ -1,7 +1,7 @@
 require "nvchad.autocmds"
 
 local autocmd = vim.api.nvim_create_autocmd
----------------------------------------------- TS TOOLS ----------------------------------------------
+---------------------------------------------- Markdown TOOLS ----------------------------------------------
 
 autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.mdx",
