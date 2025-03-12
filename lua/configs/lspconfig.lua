@@ -44,14 +44,29 @@ lspconfig.jsonls.setup {
   cmd = { "vscode-json-language-server", "--stdio" },
   filetypes = { "json" },
 }
-require("typescript-tools").setup {
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
-}
+if
+  vim.bo.filetype == "typescript"
+  or vim.bo.filetype == "typescriptreact"
+  or vim.bo.filetype == "javascript"
+  or vim.bo.filetype == "javascriptreact"
+then
+  require("typescript-tools").setup {
+    on_attach = require("nvchad.configs.lspconfig").on_attach,
+    on_init = require("nvchad.configs.lspconfig").on_init,
+    capabilities = require("nvchad.configs.lspconfig").capabilities,
+  }
+end
 
 lspconfig.tailwindcss.setup {
-  on_attach = nvlsp.on_attach,
+  on_attach = function(client, bufnr)
+    -- Disable semantic tokens to prevent Tailwind from taking priority
+    client.server_capabilities.semanticTokensProvider = nil
+
+    -- Call your existing on_attach function if needed
+    if nvlsp.on_attach then
+      nvlsp.on_attach(client, bufnr)
+    end
+  end,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   settings = {
@@ -60,14 +75,11 @@ lspconfig.tailwindcss.setup {
       emmetCompletions = true,
       hovers = true,
       suggestions = true,
-      -- Enable/disable when using for shadcn variants
+      -- Uncomment if needed for shadcn UI
       -- experimental = {
       --   classRegex = {
-      --     -- Match classes in string literals inside object properties
-      --     [["([^"]*)]],
-      --     -- Match classes in template literals inside object properties
+      --     [["([^"]*)"]],
       --     [[`([^`]*)`]],
-      --     -- Match classes in variant definitions
       --     [=[['"]([-\w\d]+)['"]\s*:\s*"([^"]*)"]=],
       --   },
       -- },
