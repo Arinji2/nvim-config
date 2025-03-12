@@ -1,10 +1,11 @@
 return {
   "akinsho/toggleterm.nvim",
-  lazy = false,
+  keys = {
+    { "<M-g>", "<cmd>ToggleTerm<cr>", mode = "n", desc = "Open ToggleTerm" }, -- Load on Alt+G
+  },
   config = function()
     local colors = dofile(vim.g.base46_cache .. "colors")
 
-    -- Setup toggleterm
     require("toggleterm").setup {
       size = 5,
       shade_terminals = false,
