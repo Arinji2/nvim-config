@@ -40,6 +40,8 @@ require("lazy").setup({
   require "plugins.discord",
   require "plugins.image",
   require "plugins.markdown",
+  require "plugins.indent-blankline",
+  require "plugins.mini-move",
   { import = "plugins" },
 }, lazy_config)
 
