@@ -6,7 +6,7 @@ return {
       keymaps = {
         accept_suggestion = "<C-q>",
         clear_suggestion = "<C-]>",
-        accept_word = "<C-j>",
+        accept_word = "<A-q>",
       },
     }
   end,
