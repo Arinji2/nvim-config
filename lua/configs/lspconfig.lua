@@ -71,6 +71,7 @@ lspconfig.tailwindcss.setup {
   capabilities = nvlsp.capabilities,
   settings = {
     tailwindCSS = {
+
       classAttributes = { "class", "className", "classList" },
       emmetCompletions = true,
       hovers = true,
