@@ -14,15 +14,15 @@ return {
         },
       },
     }
-    local autocmd = vim.api.nvim_create_autocmd
-    autocmd("BufWritePre", {
-      pattern = "*.ts,*.tsx,*.jsx,*.js",
-      callback = function(args)
-        vim.cmd "silent! undojoin | TSToolsAddMissingImports sync"
-        vim.cmd "silent! undojoin | TSToolsOrganizeImports sync"
-        require("conform").format { bufnr = args.buf }
-      end,
-    })
+    -- local autocmd = vim.api.nvim_create_autocmd
+    -- autocmd("BufWritePre", {
+    --   pattern = "*.ts,*.tsx,*.jsx,*.js",
+    --   callback = function(args)
+    --     vim.cmd "silent! undojoin | TSToolsAddMissingImports sync"
+    --     vim.cmd "silent! undojoin | TSToolsOrganizeImports sync"
+    --     require("conform").format { bufnr = args.buf }
+    --   end,
+    -- })
     local keymap = vim.keymap.set
     keymap("n", "<leader>lc", ":TSToolsRemoveUnused<CR>", { desc = "Remove unused code" })
     keymap("n", "<leader>lf", ":TSToolsFixAll<CR>", { desc = "Fix all fixable errors" })
