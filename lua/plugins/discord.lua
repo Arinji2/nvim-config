@@ -3,6 +3,6 @@ return {
   event = "VeryLazy",
   config = {
     show_time = true,
-    blacklist = { "NvimTree", "toggleterm" },
+    global_timer = true,
   },
 }
