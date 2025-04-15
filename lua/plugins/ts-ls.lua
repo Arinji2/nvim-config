@@ -6,11 +6,16 @@ return {
     local api = require "typescript-tools.api"
     require("typescript-tools").setup {
       handlers = {
-        ["textDocument/publishDiagnostics"] = api.filter_diagnostics { 6133 },
+        ["textDocument/publishDiagnostics"] = api.filter_diagnostics { 6133, 6196 },
       },
       settings = {
         tsserver_file_preferences = {
-          importModuleSpecifierPreference = "non-relative",
+          importModuleSpecifierPreference = "shortest",
+          importModuleSpecifierEnding = "auto",
+
+          -- reasonable inlay hints
+          includeInlayParameterNameHints = "literals",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
         },
       },
     }
@@ -24,7 +29,10 @@ return {
     --   end,
     -- })
     local keymap = vim.keymap.set
-    keymap("n", "<leader>lc", ":TSToolsRemoveUnused<CR>", { desc = "Remove unused code" })
-    keymap("n", "<leader>lf", ":TSToolsFixAll<CR>", { desc = "Fix all fixable errors" })
+    keymap("n", "<leader>lf", ":TSToolsFixAll<CR>", { desc = "Fix all fixable issues" })
+    keymap("n", "<leader>lo", ":TSToolsOrganizeImports<CR>", { desc = "Organize imports" })
+    keymap("n", "<leader>li", ":TSToolsAddMissingImports<CR>", { desc = "Add missing imports" })
+    keymap("n", "<leader>lu", ":TSToolsRemoveUnused<CR>", { desc = "Remove unused code" })
+    keymap("n", "<leader>lR", ":TSToolsRenameFile<CR>", { desc = "Rename file + update imports" })
   end,
 }
