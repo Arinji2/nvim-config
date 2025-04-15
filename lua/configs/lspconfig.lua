@@ -94,3 +94,15 @@ lspconfig.clangd.setup {
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 }
+
+-- Eslint language server
+-- lspconfig.eslint.setup {
+--   cmd = { "eslint" },
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+--   settings = {
+--     workingDirectory = { mode = "auto" },
+--   },
+--   root_dir = lspconfig.util.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js", "package.json", ".git"),
+-- }
