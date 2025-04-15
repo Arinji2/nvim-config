@@ -72,3 +72,4 @@ require("treesitter-context").setup {
 vim.schedule(function()
   require "mappings"
 end)
+vim.lsp.inlay_hint.enable(true)
