@@ -1,7 +1,8 @@
 return {
-  "andweeb/presence.nvim",
-  cmd = { "PresenceStart", "PresenceStop", "PresenceReload" },
-  config = function()
-    require("presence"):setup {}
-  end,
+  "IogaMaster/neocord",
+  event = "VeryLazy",
+  config = {
+    show_time = true,
+    blacklist = { "NvimTree", "toggleterm" },
+  },
 }
