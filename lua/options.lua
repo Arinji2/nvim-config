@@ -9,4 +9,4 @@ o.virtualedit = "onemore"
 o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
-o.foldenable = false
+o.foldenable = true

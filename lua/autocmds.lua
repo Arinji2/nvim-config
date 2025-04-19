@@ -7,3 +7,10 @@ autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.mdx",
   command = "set filetype=markdown",
 })
+
+-- Open all folds
+autocmd({ "BufReadPost", "FileReadPost" }, {
+  callback = function()
+    vim.cmd "normal zR"
+  end,
+})
