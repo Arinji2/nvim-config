@@ -9,8 +9,8 @@ autocmd({ "BufNewFile", "BufRead" }, {
 })
 
 -- Open all folds
-autocmd({ "BufReadPost", "FileReadPost" }, {
+autocmd({ "BufWinEnter" }, {
   callback = function()
-    vim.cmd "normal zR"
+    vim.cmd "silent! normal! zR"
   end,
 })
