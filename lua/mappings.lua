@@ -15,6 +15,18 @@ map("n", "<leader>fs", "<Cmd> lua require ('telescope.builtin').lsp_document_sym
   desc = "Find function",
 })
 
+map("n", "<leader>cf", function()
+  local path = vim.fn.expand "%"
+  vim.fn.setreg("+", path)
+  vim.notify("Copied relative path:\n" .. path)
+end, { noremap = true, silent = true, desc = "Copy filename (Relative path)" })
+
+map("n", "<leader>cF", function()
+  local path = vim.fn.expand "%:p"
+  vim.fn.setreg("+", path)
+  vim.notify("Copied absolute path:\n" .. path)
+end, { noremap = true, silent = true, desc = "Copy filename (Absolute path)" })
+
 vim.keymap.set("n", "<leader>bb", function()
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted and not vim.bo[buf].modified then
