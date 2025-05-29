@@ -15,6 +15,9 @@ map("n", "<leader>fs", "<Cmd> lua require ('telescope.builtin').lsp_document_sym
   desc = "Find function",
 })
 
+map("n", "+", "<C-a>", { desc = "Increment numbers", noremap = true })
+map("n", "-", "<C-x>", { desc = "Decrement numbers", noremap = true })
+
 map("n", "<leader>cf", function()
   local path = vim.fn.expand "%"
   vim.fn.setreg("+", path)
