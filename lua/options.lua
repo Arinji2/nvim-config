@@ -10,3 +10,4 @@ o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,term
 o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldenable = false
+o.number = true
