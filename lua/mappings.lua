@@ -3,7 +3,6 @@ require "nvchad.mappings"
 --
 local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
 map("n", "<leader>fw", function()
   require("telescope").extensions.live_grep_args.live_grep_args()
 end, { desc = "telescope live grep (args)" })
