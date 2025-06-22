@@ -21,6 +21,7 @@ local languages = {
     "eslint",
     "jsonls",
     "clangd",
+    "vtsls",
   },
 }
 
