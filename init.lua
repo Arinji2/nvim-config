@@ -36,13 +36,14 @@ require("lazy").setup({
   require "plugins.rename",
   require "plugins.hardtime",
   require "plugins.multicursors",
-  require "plugins.ts-ls",
+  -- require "plugins.ts-ls",
   require "plugins.discord",
   require "plugins.image",
   require "plugins.markdown",
   require "plugins.indent-blankline",
   require "plugins.mini-move",
-  require "plugins.wakatime", { import = "plugins" },
+  require "plugins.wakatime",
+  { import = "plugins" },
 }, lazy_config)
 
 -- load theme
