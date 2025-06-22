@@ -49,7 +49,7 @@ M.ui = {
           local clients = vim.lsp.get_clients()
           -- prioritize typescript-tools if available
           table.sort(clients, function(a, b)
-            return a.name == "typescript-tools" and b.name ~= "typescript-tools"
+            return a.name == "vtsls" and b.name ~= "vtsls"
           end)
 
           for _, client in ipairs(clients) do
