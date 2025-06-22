@@ -44,18 +44,6 @@ lspconfig.jsonls.setup {
   cmd = { "vscode-json-language-server", "--stdio" },
   filetypes = { "json" },
 }
-if
-  vim.bo.filetype == "typescript"
-  or vim.bo.filetype == "typescriptreact"
-  or vim.bo.filetype == "javascript"
-  or vim.bo.filetype == "javascriptreact"
-then
-  require("typescript-tools").setup {
-    on_attach = require("nvchad.configs.lspconfig").on_attach,
-    on_init = require("nvchad.configs.lspconfig").on_init,
-    capabilities = require("nvchad.configs.lspconfig").capabilities,
-  }
-end
 
 lspconfig.tailwindcss.setup {
   on_attach = function(client, bufnr)
@@ -106,3 +94,32 @@ lspconfig.clangd.setup {
 --   },
 --   root_dir = lspconfig.util.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js", "package.json", ".git"),
 -- }
+lspconfig.vtsls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    typescript = {
+      format = {
+        enable = true,
+      },
+      suggest = {
+        completeFunctionCalls = true,
+      },
+    },
+    javascript = {
+      format = {
+        enable = true,
+      },
+      suggest = {
+        completeFunctionCalls = true,
+      },
+    },
+    vtsls = {
+      experimental = {
+        enableProjectDiagnostics = true, -- enables diagnostics across multiple TS projects
+      },
+    },
+  },
+  filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+}
