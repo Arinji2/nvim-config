@@ -42,7 +42,7 @@ require("lazy").setup({
   require "plugins.markdown",
   require "plugins.indent-blankline",
   require "plugins.mini-move",
-  { import = "plugins" },
+  require "plugins.wakatime", { import = "plugins" },
 }, lazy_config)
 
 -- load theme
