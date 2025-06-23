@@ -82,7 +82,7 @@ map({ "n", "t" }, "<A-g>", function()
         border = "shadow",
         width = vim.o.columns,
         height = math.floor(vim.o.lines),
-        winblend = 3,
+        winblend = 0,
       },
       on_close = function()
         vim.cmd "set cmdheight=1"
