@@ -98,6 +98,25 @@ map({ "n", "t" }, "<A-g>", function()
   end
 end, { desc = "Toggle LazyGit terminal", silent = true })
 
+local ls = require "luasnip"
+
+-- Luasnip jump
+map({ "i", "s" }, "<Tab>", function()
+  if ls.expand_or_jumpable() then
+    ls.expand_or_jump()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+  end
+end, { silent = true, desc = "LuaSnip jump forward" })
+
+map({ "i", "s" }, "<S-Tab>", function()
+  if ls.jumpable(-1) then
+    ls.jump(-1)
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true), "n", false)
+  end
+end, { silent = true, desc = "LuaSnip jump backward" })
+
 -- Generic terminal toggle
 local term = Terminal:new { hidden = true }
 map({ "n", "t" }, "<C-\\>", function()
