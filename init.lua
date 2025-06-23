@@ -24,6 +24,7 @@ require("lazy").setup({
     end,
   },
 
+  require "plugins.printer",
   require "plugins.inline-diagnostics",
   require "plugins.nvim-treesitter",
   require "plugins.git-signs",
