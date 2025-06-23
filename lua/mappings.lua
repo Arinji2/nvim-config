@@ -1,37 +1,54 @@
 require "nvchad.mappings"
--- add yours here
---
+
 local map = vim.keymap.set
+
+-- General
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("n", "<leader>fw", function()
-  require("telescope").extensions.live_grep_args.live_grep_args()
-end, { desc = "telescope live grep (args)" })
-map("i", "<C-s>", "<Esc>:w<CR>i", { noremap = true, silent = true })
-map("x", "<leader>d", "y'>o<Esc>p", { noremap = true, silent = true, desc = "Duplicate selected, below cursor" })
+map("n", "+", "<C-a>", { desc = "Increment number" })
+map("n", "-", "<C-x>", { desc = "Decrement number" })
+map("i", "<C-s>", "<Esc>:w<CR>i", { desc = "Save file", noremap = true, silent = true })
 
-map({ "n", "i" }, "<C-z>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
-map("n", "<leader>fs", "<Cmd> lua require ('telescope.builtin').lsp_document_symbols({ symbols = 'function'})<CR>", {
-  desc = "Find function",
-})
-
-map("n", "+", "<C-a>", { desc = "Increment numbers", noremap = true })
-map("n", "-", "<C-x>", { desc = "Decrement numbers", noremap = true })
-
+-- Clipboard / File path copying
 map("n", "<leader>cf", function()
   local path = vim.fn.expand "%"
   vim.fn.setreg("+", path)
   vim.notify("Copied relative path:\n" .. path)
-end, { noremap = true, silent = true, desc = "Copy filename (Relative path)" })
-vim.keymap.set("n", "<leader>ca", function()
-  require("tiny-code-action").code_action()
-end, { noremap = true, silent = true })
+end, { desc = "Copy relative path", noremap = true, silent = true })
+
 map("n", "<leader>cF", function()
   local path = vim.fn.expand "%:p"
   vim.fn.setreg("+", path)
   vim.notify("Copied absolute path:\n" .. path)
-end, { noremap = true, silent = true, desc = "Copy filename (Absolute path)" })
+end, { desc = "Copy absolute path", noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>bb", function()
+-- Telescope
+map("n", "<leader>fw", function()
+  require("telescope").extensions.live_grep_args.live_grep_args()
+end, { desc = "Telescope live grep (with args)" })
+
+map("n", "<leader>fs", function()
+  require("telescope.builtin").lsp_document_symbols { symbols = "function" }
+end, { desc = "Find functions in current file" })
+
+-- LSP / Code actions
+map({ "n", "i" }, "<C-z>", vim.lsp.buf.signature_help, { desc = "LSP Signature Help", noremap = true, silent = true })
+
+map("n", "<leader>ca", function()
+  require("tiny-code-action").code_action()
+end, { desc = "LSP Code Actions", noremap = true, silent = true })
+
+map("n", "<leader>rn", function()
+  require "inc_rename"
+  return ":IncRename "
+end, { desc = "Rename (manual input)", expr = true })
+
+map("n", "<leader>rN", function()
+  require "inc_rename"
+  return ":IncRename " .. vim.fn.expand "<cword>"
+end, { desc = "Rename (pre-filled word)", expr = true })
+
+-- Buffer / Windows
+map("n", "<leader>bb", function()
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted and not vim.bo[buf].modified then
       vim.api.nvim_buf_delete(buf, { force = true })
@@ -39,16 +56,23 @@ vim.keymap.set("n", "<leader>bb", function()
   end
 end, { desc = "Close all saved buffers" })
 
+map("x", "<leader>d", "y'>o<Esc>p", {
+  desc = "Duplicate selected text below",
+  noremap = true,
+  silent = true,
+})
+
+-- Formatting
 map("n", "<leader>fp", function()
   require("scripts.prettier").format_with_tailwind()
-end, { desc = "Format with tailwind" })
+end, { desc = "Format file with Tailwind" })
 
+-- Terminal: ToggleTerm
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = nil
 
-vim.keymap.set({ "n", "t" }, "<A-g>", function()
+map({ "n", "t" }, "<A-g>", function()
   if not lazygit then
-    -- Create the LazyGit terminal if it doesn't exist
     lazygit = Terminal:new {
       cmd = "lazygit",
       hidden = true,
@@ -57,7 +81,7 @@ vim.keymap.set({ "n", "t" }, "<A-g>", function()
       float_opts = {
         border = "shadow",
         width = vim.o.columns,
-        height = math.floor(vim.o.lines * 1),
+        height = math.floor(vim.o.lines),
         winblend = 3,
       },
       on_close = function()
@@ -66,33 +90,16 @@ vim.keymap.set({ "n", "t" }, "<A-g>", function()
     }
   end
 
-  -- Check if the terminal is currently open and toggle accordingly
   if lazygit:is_open() then
     lazygit:close()
   else
     vim.o.cmdheight = 0
     lazygit:open()
   end
-end, { silent = true, desc = "Toggle LazyGit terminal" })
--- Create a terminal instance
-local term = Terminal:new {
-  hidden = true, -- Start hidden
-}
+end, { desc = "Toggle LazyGit terminal", silent = true })
 
--- Function to toggle the current terminal
-local function toggle_current_terminal()
+-- Generic terminal toggle
+local term = Terminal:new { hidden = true }
+map({ "n", "t" }, "<C-\\>", function()
   term:toggle()
-end
-
--- Keymaps for toggling and creating terminals
-map({ "n", "t" }, "<C-\\>", toggle_current_terminal, { desc = "Toggle the current terminal" })
-
-vim.keymap.set("n", "<leader>rn", function()
-  require "inc_rename"
-  return ":IncRename "
-end, { desc = "Rename the word under cursor", expr = true })
-
-vim.keymap.set("n", "<leader>rN", function()
-  require "inc_rename"
-  return ":IncRename " .. vim.fn.expand "<cword>"
-end, { desc = "Rename the word under cursor (Fills Word)", expr = true })
+end, { desc = "Toggle embedded terminal" })
