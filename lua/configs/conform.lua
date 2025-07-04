@@ -12,6 +12,7 @@ local options = {
     markdown = { "prettierd" },
     sql = { "sqlfmt" },
     cpp = { "clang-format" },
+    yaml = { "prettierd" },
   },
 
   format_on_save = {
