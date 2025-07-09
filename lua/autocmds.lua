@@ -6,26 +6,26 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if not client or client.name ~= "vtsls" then
+
+    if not client then
       return
     end
 
-    -- Buffer-local mapping (only for files where vtsls is active)
-    vim.keymap.set("n", "<leader>lo", function()
-      vim.lsp.buf.code_action {
-        ---@diagnostic disable-next-line
-        context = { only = { "source.organizeImports" }, diagnostics = {} },
-        apply = true,
-      }
-    end, { buffer = args.buf, desc = "LSP: Organize Imports" })
-
-    vim.keymap.set("n", "<leader>la", function()
-      vim.lsp.buf.code_action {
-        ---@diagnostic disable-next-line
-        context = { only = { "source.addMissingImports.ts" }, diagnostics = {} },
-        apply = true,
-      }
-    end, { buffer = args.buf, desc = "LSP: Add Missing Imports" })
+    if client.name == "biome" then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("BiomeFixAll", { clear = true }),
+        callback = function()
+          vim.lsp.buf.code_action {
+            context = {
+              ---@diagnostic disable-next-line: assign-type-mismatch
+              only = { "source.fixAll.biome" },
+              diagnostics = {},
+            },
+            apply = true,
+          }
+        end,
+      })
+    end
   end,
 })
 autocmd({ "BufNewFile", "BufRead" }, {

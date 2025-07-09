@@ -18,7 +18,7 @@ local languages = {
     "cssls",
     "gopls",
     "tailwindcss",
-    "eslint",
+    "biome",
     "jsonls",
     "clangd",
     "vtsls",
