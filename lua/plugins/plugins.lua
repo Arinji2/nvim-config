@@ -1,4 +1,5 @@
 return {
+
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -41,5 +42,13 @@ return {
       dofile(vim.g.base46_cache .. "whichkey")
       return {}
     end,
+  },
+  {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
   },
 }
