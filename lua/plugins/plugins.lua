@@ -53,4 +53,10 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
   },
+  {
+    "windwp/nvim-autopairs",
+    opts = {
+      map_cr = false, -- stop autopairs from mapping <BS>
+    },
+  },
 }
