@@ -12,6 +12,7 @@ local languages = {
     "javascript",
     "tsx",
     "sql",
+    "python",
   },
   lsp_servers = {
     "html",
@@ -22,6 +23,7 @@ local languages = {
     "jsonls",
     "clangd",
     "vtsls",
+    "pyright",
   },
 }
 
