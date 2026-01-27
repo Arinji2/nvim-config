@@ -122,3 +122,8 @@ local term = Terminal:new { hidden = true }
 map({ "n", "t" }, "<C-\\>", function()
   term:toggle()
 end, { desc = "Toggle embedded terminal" })
+
+-- Compiler.nvim
+map("n", "<leader>co", "<cmd>CompilerOpen<cr>", { desc = "Compiler open" })
+map("n", "<leader>cr", "<cmd>CompilerStop<cr><cmd>CompilerRedo<cr>", { desc = "Compiler redo" })
+map("n", "<leader>ct", "<cmd>CompilerToggleResults<cr>", { desc = "Compiler toggle results" })
