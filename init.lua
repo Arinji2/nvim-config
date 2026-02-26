@@ -153,6 +153,8 @@ require("comfy-line-numbers").setup {
   up_key = "k",
   down_key = "j",
 
+  require("smart-paste").setup(),
+
   hidden_file_types = { "undotree" },
   hidden_buffer_types = { "terminal" },
 }
