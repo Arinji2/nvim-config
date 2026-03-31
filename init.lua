@@ -47,10 +47,6 @@ require("nvim-treesitter.configs").setup {
 }
 require "options"
 require "autocmds"
-require("treesitter-context").setup {
-  max_lines = 1,
-  trim_scope = "inner",
-}
 vim.schedule(function()
   require "mappings"
 end)
