@@ -2,6 +2,19 @@ return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
     ensure_installed = require("languages").treesitter,
+    highlight = {
+      enable = true,
+    },
+    indent = {
+      enable = true,
+    },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        node_incremental = "v",
+        node_decremental = "<C-v>",
+      },
+    },
   },
   dependencies = {
     {
