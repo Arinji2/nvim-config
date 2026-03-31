@@ -1,78 +1,55 @@
--- Load defaults (e.g., lua_lsp)
-require("nvchad.configs.lspconfig").defaults()
-
+local nvlsp = require "nvchad.configs.lspconfig"
 local servers = require("languages").lsp_servers
 
--- GO language server
-vim.lsp.config("gopls", {
-  -- filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  -- root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-    },
-  },
-})
+-- Load NvChad's defaults
+nvlsp.defaults()
 
-vim.lsp.config("tailwindcss", {
-  settings = {
-    tailwindCSS = {
-      classAttributes = { "class", "className", "classList" },
-      emmetCompletions = true,
-      hovers = true,
-      suggestions = true,
-      -- Uncomment if needed for shadcn UI
-      -- experimental = {
-      --   classRegex = {
-      --     [["([^"]*)"]],
-      --     [[`([^`]*)`]],
-      --     [=[['"]([-\w\d]+)['"]\s*:\s*"([^"]*)"]=],
-      --   },
-      -- },
-    },
-  },
-})
-
-vim.lsp.enable(servers)
-
-vim.lsp.config("vtsls", {
-  filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-  settings = {
-    typescript = {
-      format = {
-        enable = true,
-      },
-      suggest = {
-        completeFunctionCalls = true,
-      },
-    },
-    javascript = {
-      format = {
-        enable = true,
-      },
-      suggest = {
-        completeFunctionCalls = true,
-      },
-    },
-    vtsls = {
-      experimental = {
-        enableProjectDiagnostics = true,
+-- 1. Define custom settings for specific servers
+local server_configs = {
+  gopls = {
+    settings = {
+      gopls = {
+        analyses = { unusedparams = true },
+        staticcheck = true,
       },
     },
   },
-})
 
--- Eslint language server
--- lspconfig.eslint.setup {
---   cmd = { "eslint" },
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
---   settings = {
---     workingDirectory = { mode = "auto" },
---   },
---   root_dir = lspconfig.util.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js", "package.json", ".git"),
--- }
+  tailwindcss = {
+    settings = {
+      tailwindCSS = {
+        classAttributes = { "class", "className", "classList" },
+        emmetCompletions = true,
+        hovers = true,
+        suggestions = true,
+      },
+    },
+  },
+
+  vtsls = {
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    settings = {
+      typescript = {
+        format = { enable = false },
+        suggest = { completeFunctionCalls = true },
+      },
+      javascript = {
+        format = { enable = false },
+        suggest = { completeFunctionCalls = true },
+      },
+      vtsls = {
+        experimental = { enableProjectDiagnostics = true },
+      },
+    },
+  },
+}
+
+for _, name in ipairs(servers) do
+  local opts = server_configs[name] or {}
+
+  -- CRITICAL: Inject NvChad's capabilities so autocompletion works!
+  opts.capabilities = nvlsp.capabilities
+
+  vim.lsp.config(name, opts)
+  vim.lsp.enable(name)
+end
