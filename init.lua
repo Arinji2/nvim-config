@@ -45,5 +45,3 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts.border = "single"
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
-
-require("oil").setup()
