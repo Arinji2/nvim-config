@@ -1,5 +1,6 @@
 return {
   "mluders/comfy-line-numbers.nvim",
+  lazy = false,
   opts = {
     labels = {
       "1",
