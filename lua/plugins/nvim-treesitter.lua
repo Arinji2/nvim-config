@@ -14,14 +14,27 @@ return {
   config = function()
     require("nvim-tree").setup {
       update_cwd = true,
+
+      filesystem_watchers = {
+        enable = true,
+        ignore_dirs = {
+          ".next",
+          "node_modules",
+          "dist",
+          "build",
+        },
+      },
+
       update_focused_file = {
         enable = true,
         update_root = false,
         ignore_list = { "help" },
       },
+
       view = {
         relativenumber = true,
       },
+
       renderer = {
         add_trailing = false,
         group_empty = false,
@@ -39,10 +52,12 @@ return {
           },
         },
       },
+
       git = {
         enable = true,
         ignore = false,
       },
+
       filters = {
         dotfiles = false,
       },

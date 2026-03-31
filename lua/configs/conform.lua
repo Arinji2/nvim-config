@@ -15,10 +15,21 @@ local options = {
     yaml = { "prettierd" },
   },
 
+  formatters = {
+    biome = {
+      command = "biome",
+      args = {
+        "format",
+        "--stdin-file-path",
+        "$FILENAME",
+      },
+      stdin = true,
+    },
+  },
+
   format_on_save = {
-    -- These options will be passed to conform.format()
     timeout_ms = 2500,
-    lsp_fallback = true,
+    lsp_fallback = false,
   },
 }
 
