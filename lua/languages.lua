@@ -24,6 +24,7 @@ local languages = {
     "clangd",
     "vtsls",
     "pyright",
+    "eslint",
   },
 }
 

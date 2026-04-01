@@ -42,6 +42,15 @@ local server_configs = {
       },
     },
   },
+  eslint = {
+    settings = {
+      codeActionOnSave = {
+        enable = true,
+        mode = "all",
+      },
+      workingDirectory = { mode = "auto" },
+    },
+  },
 }
 
 for _, name in ipairs(servers) do
