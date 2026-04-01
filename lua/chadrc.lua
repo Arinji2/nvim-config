@@ -47,10 +47,6 @@ M.ui = {
       lsp = function()
         if rawget(vim, "lsp") then
           local clients = vim.lsp.get_clients()
-          -- prioritize typescript-tools if available
-          table.sort(clients, function(a, b)
-            return a.name == "vtsls" and b.name ~= "vtsls"
-          end)
 
           for _, client in ipairs(clients) do
             if client.attached_buffers[vim.api.nvim_get_current_buf()] then

@@ -18,13 +18,13 @@ local languages = {
     "html",
     "cssls",
     "gopls",
-    "tailwindcss",
     "biome",
+    "eslint",
     "jsonls",
     "clangd",
     "vtsls",
     "pyright",
-    "eslint",
+    "tailwindcss",
   },
 }
 
