@@ -25,6 +25,7 @@ local options = {
     sql = { "sqlfmt" },
     cpp = { "clang-format" },
     yaml = { "prettierd" },
+    python = { "ruff_format", "ruff_fix" },
 
     -- Use our smart function for all JS/TS files!
     javascript = js_formatters,
